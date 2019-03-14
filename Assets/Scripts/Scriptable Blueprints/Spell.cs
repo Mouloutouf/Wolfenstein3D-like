@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "Weapon", menuName = "Wolfenstein/Spell", order = 0)]
+[CreateAssetMenu(fileName = "Spell", menuName = "Wolfenstein/Spell", order = 0)]
 public class Spell : SerializedScriptableObject
 {
 }
