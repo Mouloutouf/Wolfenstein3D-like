@@ -1,0 +1,49 @@
+#if UNITY_EDITOR
+using Sirenix.OdinInspector.PinkBlood.Data;
+using System;
+using UnityEngine;
+using Sirenix.OdinInspector;
+
+// 
+// CharacterStats is simply a StatList, that expose the relevant stats for a character.
+// Also note that the StatList might look like a dictionary, in how it's used, 
+// but it's actually just a regular list, serialized by Unity. Take a look at the StatList to learn more.
+// 
+
+[Serializable]
+public class PlayerStats
+{
+    [HideInInspector]
+    public StatList Stats = new StatList();
+
+    [ProgressBar(0, 20), ShowInInspector]
+    public float Damages
+    {
+        get { return this.Stats[StatType.Damages]; }
+        set { this.Stats[StatType.Damages] = value; }
+    }
+
+    [ProgressBar(0, 20), ShowInInspector]
+    public float Speed
+    {
+        get { return this.Stats[StatType.Speed]; }
+        set { this.Stats[StatType.Speed] = value; }
+    }
+
+    [ProgressBar(0, 100), ShowInInspector]
+    public float Rage
+    {
+        get { return this.Stats[StatType.Rage]; }
+        set { this.Stats[StatType.Rage] = value; }
+    }
+
+    [ProgressBar(0, 300), ShowInInspector]
+    public float Ammunitions
+    {
+        get { return this.Stats[StatType.Ammunitions]; }
+        set { this.Stats[StatType.Ammunitions] = value; }
+    }
+}
+
+
+#endif
