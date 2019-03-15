@@ -60,13 +60,13 @@ public class PlayerWeapon : Behaviour, IPlClass
         Physics.SphereCast(Modules.Camera.transform.position, Modules.Player.activeWeapon.stats.HitRadius, Modules.Camera.transform.forward, out RaycastHit hit, 100f, Modules.Player.hittableLayers, QueryTriggerInteraction.Ignore);
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.name);
+            Debug.Log("[PlayerWeapon] Hit : (" + hit.collider.name +")");
             Debug.DrawLine(start: Modules.Camera.transform.position, end: hit.point, color: Color.red, duration: 3f);
-            GameObject.Instantiate(Resources.Load("Impact"), position: hit.point, rotation: Quaternion.identity);
+            GameObject.Instantiate(Resources.Load("Impact"), position: hit.point, rotation: Quaternion.identity, hit.collider.transform.parent);
         }
         else
         {
-            Debug.Log("Nothing Hit");
+            Debug.Log("[PlayerWeapon] Nothing Hit");
         }
     }
     #endregion
