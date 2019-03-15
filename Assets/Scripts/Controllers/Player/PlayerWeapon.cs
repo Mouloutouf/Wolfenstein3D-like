@@ -12,22 +12,22 @@ public class PlayerWeapon : Behaviour, IPlClass
 
     #region Private Fields
     bool canFire = true;
+    bool stopFire = false;
+    IEnumerator cooldownCoroutine;
     #endregion
 
     #region Public Methods
     public void FireWeapon(bool keyDown)
     {
-        if (keyDown)
+        if (keyDown && canFire)
         {
             //You can get the activeWeapon with : Modules.Player.activeWeapon
-            Modules.Graphism.WeaponFired();
-            canFire = false;
-            /*Since this is a Behaviour and not a MonoBehaviour, 
-            Launch Cooldown Coroutine with : Modules.Player.StartCoroutine(Cooldown(theWeaponCooldown))*/
+
+
+            Shoot();
         }
         else
         {
-
         }
     }
 
@@ -47,7 +47,28 @@ public class PlayerWeapon : Behaviour, IPlClass
     #endregion
 
     #region Private Methods
+    private void Shoot()
+    {
+        canFire = false;
+        Modules.Graphism.WeaponFired();
+        /*Since this is a Behaviour and not a MonoBehaviour, 
+        Launch Cooldown Coroutine with : Modules.Player.StartCoroutine(Cooldown(theWeaponCooldown))*/
+        cooldownCoroutine = Cooldown(Modules.Player.activeWeapon.stats.FireRate);
+        Modules.Player.StartCoroutine(cooldownCoroutine);
 
+        //Checking for collisions inside a Sphere using the hittableLY
+        Physics.SphereCast(Modules.Camera.transform.position, Modules.Player.activeWeapon.stats.HitRadius, Modules.Camera.transform.forward, out RaycastHit hit, 100f, Modules.Player.hittableLayers, QueryTriggerInteraction.Ignore);
+        if (hit.collider != null)
+        {
+            Debug.Log(hit.collider.name);
+            Debug.DrawLine(start: Modules.Camera.transform.position, end: hit.point, color: Color.red, duration: 3f);
+            GameObject.Instantiate(Resources.Load("Impact"), position: hit.point, rotation: Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("Nothing Hit");
+        }
+    }
     #endregion
 
     #region IEnumerators

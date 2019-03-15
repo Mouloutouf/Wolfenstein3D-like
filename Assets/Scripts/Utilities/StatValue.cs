@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 namespace Sirenix.OdinInspector.PinkBlood.Data
 {
     using System;
@@ -38,5 +37,33 @@ namespace Sirenix.OdinInspector.PinkBlood.Data
             return this.Type == other.Type && this.Value == other.Value;
         }
     }
+
+    [Serializable]
+    public struct StatValueInt : IEquatable<StatValue>
+    {
+        [HideInInspector]
+        public StatType Type;
+
+        [Range(-100, 100)]
+        [LabelWidth(70)]
+        [LabelText("$Type")]
+        public int Value;
+
+        public StatValueInt(StatType type, int value)
+        {
+            this.Type = type;
+            this.Value = value;
+        }
+
+        public StatValueInt(StatType type)
+        {
+            this.Type = type;
+            this.Value = 0;
+        }
+
+        public bool Equals(StatValue other)
+        {
+            return this.Type == other.Type && this.Value == other.Value;
+        }
+    }
 }
-#endif

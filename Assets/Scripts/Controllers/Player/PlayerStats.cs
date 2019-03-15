@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 using Sirenix.OdinInspector.PinkBlood.Data;
 using System;
 using UnityEngine;
@@ -23,13 +22,6 @@ public class PlayerStats
         set { this.Stats[StatType.Damages] = value; }
     }
 
-    [ProgressBar(0, 20), ShowInInspector]
-    public float Speed
-    {
-        get { return this.Stats[StatType.Speed]; }
-        set { this.Stats[StatType.Speed] = value; }
-    }
-
     [ProgressBar(0, 100), ShowInInspector]
     public float Rage
     {
@@ -43,7 +35,25 @@ public class PlayerStats
         get { return this.Stats[StatType.Ammunitions]; }
         set { this.Stats[StatType.Ammunitions] = value; }
     }
+
+    [ProgressBar(0, 20), ShowInInspector]
+    public float SpeedMax
+    {
+        get { return this.Stats[StatType.SpeedMax]; }
+        set { this.Stats[StatType.SpeedMax] = value; }
+    }
+
+    [ProgressBar(0, 20), ShowInInspector]
+    public float SpeedAcc
+    {
+        get { return this.Stats[StatType.SpeedAcc]; }
+        set { this.Stats[StatType.SpeedAcc] = value; }
+    }
+
+    [ProgressBar(0, 20), ShowInInspector]
+    public float SpeedDecc
+    {
+        get { return this.Stats[StatType.SpeedDecc]; }
+        set { this.Stats[StatType.SpeedDecc] = value; }
+    }
 }
-
-
-#endif

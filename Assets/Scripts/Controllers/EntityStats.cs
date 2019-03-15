@@ -1,5 +1,4 @@
-﻿#if UNITY_EDITOR
-using Sirenix.OdinInspector.PinkBlood.Data;
+﻿using Sirenix.OdinInspector.PinkBlood.Data;
 using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -16,4 +15,3 @@ public class EntityStats
         set { this.Stats[StatType.Hitpoints] = value; }
     }
 }
-#endif
