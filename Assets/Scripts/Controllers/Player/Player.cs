@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
+[RequireComponent(typeof(AudioSource))]
 public class Player : Entities
 {
     #region Interface
-    [BoxGroup("Stats"), HideLabel]
+    [FoldoutGroup("Stats"), HideLabel]
     public PlayerStats stats = new PlayerStats();
 
     [FoldoutGroup("Player Equipement")]
@@ -20,7 +21,18 @@ public class Player : Entities
     [FoldoutGroup("Player Equipement")]
     public int grenadeAmount;
 
+    [FoldoutGroup("FPS Settings")]
+    public LayerMask hittableLayers;
+
+    [FoldoutGroup("SFX")]
+    public Dictionary<string, AudioClip> sfx;
+    [FoldoutGroup("SFX")]
+    public AudioSource playerAudio;
+    [FoldoutGroup("SFX")]
+    public AudioSource weaponAudio;
+
     #region References
+    [HideInInspector]
     public Rigidbody rb;
 
     #endregion
@@ -61,6 +73,7 @@ public class Player : Entities
 
         //References
         rb = GetComponent<Rigidbody>();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

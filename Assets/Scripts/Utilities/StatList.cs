@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 namespace Sirenix.OdinInspector.PinkBlood.Data
 {
     using System;
@@ -117,4 +116,3 @@ namespace Sirenix.OdinInspector.PinkBlood.Data
 
 #endif
 }
-#endif

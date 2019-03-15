@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 public abstract class Entities : SerializedMonoBehaviour
 {
-    [BoxGroup("Stats"), HideLabel, InlineProperty]
+    [FoldoutGroup("Stats"), HideLabel, InlineProperty]
     public EntityStats entityStats = new EntityStats();
 
     public virtual void TakeDamage(float amount)

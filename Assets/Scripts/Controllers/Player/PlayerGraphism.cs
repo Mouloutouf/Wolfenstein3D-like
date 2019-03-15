@@ -18,6 +18,7 @@ public class PlayerGraphism : Behaviour, IPlClass
     public void SwitchWeaponGraphics()
     {
         //You can get the activeWeapon with : Modules.Player.activeWeapon
+        //Modules.Player.activeWeapon.sprites["Idle"]
     }
 
     public void SwitchSpellGraphics()
@@ -28,10 +29,17 @@ public class PlayerGraphism : Behaviour, IPlClass
     public void WeaponFired()
     {
         //You can get the activeWeapon with : Modules.Player.activeWeapon
+
+        //SFX
+        Modules.Player.weaponAudio.clip = Modules.Player.activeWeapon.PickAudio("Fire");
+        Modules.Player.weaponAudio.Play();
     }
 
     public void SpellFired()
     {
+
+
+        //SFX
 
     }
     #endregion
@@ -39,4 +47,6 @@ public class PlayerGraphism : Behaviour, IPlClass
     #region Private Methods
 
     #endregion
+
+
 }
