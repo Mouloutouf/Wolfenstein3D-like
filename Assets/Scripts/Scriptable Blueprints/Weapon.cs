@@ -21,6 +21,7 @@ public class Weapon : SerializedScriptableObject
     public Dictionary<string, List<AudioClip>> sfx = new Dictionary<string, List<AudioClip>>
     {
         {"Fire", new List<AudioClip>() },
+        {"DryFire", new List<AudioClip>() },
         {"Reload", new List<AudioClip>() }
     };
 

@@ -18,6 +18,8 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 8300000, guid: 96ede491bc8e686449c43900e6997555, type: 3}
     - {fileID: 8300000, guid: d8e451f05cb9de8429ad35973d35b213, type: 3}
+    - {fileID: 8300000, guid: 306f68cc589472849ab82fc9197b20d2, type: 3}
+    - {fileID: 8300000, guid: dd50733f076de8446ae456f679bfa5a5, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -35,7 +37,7 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 5
     - Name: 
       Entry: 7
       Data: Sirenix.OdinInspector.PinkBlood.Data.StatValue, Assembly-CSharp
@@ -81,6 +83,18 @@ MonoBehaviour:
     - Name: Value
       Entry: 4
       Data: 0.223880589
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: Sirenix.OdinInspector.PinkBlood.Data.StatValue, Assembly-CSharp
+    - Name: Type
+      Entry: 3
+      Data: 6
+    - Name: Value
+      Entry: 4
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -176,7 +190,7 @@ MonoBehaviour:
       Data: 4
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
@@ -217,7 +231,35 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 1
+      Data: DryFire
+    - Name: 
+      Entry: 7
+      Data: 8|System.Collections.Generic.List`1[[UnityEngine.AudioClip, UnityEngine.AudioModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 3
     - Name: 
       Entry: 13
       Data: 

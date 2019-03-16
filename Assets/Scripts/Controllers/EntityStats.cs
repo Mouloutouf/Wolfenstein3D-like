@@ -12,6 +12,6 @@ public class EntityStats
     public float Hitpoints
     {
         get { return this.Stats[StatType.Hitpoints]; }
-        set { this.Stats[StatType.Hitpoints] = value; }
+        set { this.Stats[StatType.Hitpoints] = Mathf.FloorToInt(value); }
     }
 }

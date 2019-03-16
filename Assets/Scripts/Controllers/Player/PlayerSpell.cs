@@ -21,8 +21,8 @@ public class PlayerSpell : Behaviour, IPlClass
         if (keyDown && canFire)
         {
             //You can get the activeSpell with : Modules.Player.activeSpell
-            Modules.Graphism.SpellFired();
             canFire = false;
+            Modules.Player.StartCoroutine(Cooldown(0.6f));
             /*Since this is a Behaviour and not a MonoBehaviour, 
             Launch Cooldown Coroutine with : Modules.Player.StartCoroutine(Cooldown(theSpellCooldown))*/
         }
@@ -36,8 +36,9 @@ public class PlayerSpell : Behaviour, IPlClass
     {
         //You can get the activeSpell with : Modules.Player.activeSpell
         //You can get the spells list with : Modules.Player.spells
-        canFire = true;
+        canFire = false;
         Modules.Graphism.SwitchSpellGraphics();
+        Modules.Player.StartCoroutine(Cooldown(0.6f));
     }
 
     #endregion

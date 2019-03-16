@@ -70,6 +70,11 @@ public class PlayerMovement : Behaviour, IPlClass
         }
     }
 
+    public void Action()
+    {
+
+    }
+
     #endregion
 
     #region Private Methods

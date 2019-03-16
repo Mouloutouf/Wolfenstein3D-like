@@ -15,6 +15,8 @@ public class InputManager : MonoBehaviour
     //Events
     public event Action<bool> Fire = delegate { };
     public event Action<bool> Spell = delegate { };
+    public event Action Reload = delegate { };
+    public event Action Action = delegate { };
     public event Action<Vector2> MouseMoved = delegate { };
     public event Action<Vector3> MovementInput = delegate { };
     public event Action Pause = delegate { };
@@ -26,8 +28,10 @@ public class InputManager : MonoBehaviour
     #region Keycodes
     public Dictionary<string, KeyCode> Keys = new Dictionary<string, KeyCode>
     {
-        { "Fire", KeyCode.Mouse0 },
-        { "Spell", KeyCode.Mouse1 },
+        {"Fire", KeyCode.Mouse0 },
+        {"Reload", KeyCode.R },
+        {"Spell", KeyCode.Mouse1 },
+        {"Action", KeyCode.Space },
         {"Left", KeyCode.Q },
         {"Right", KeyCode.D },
         {"Forward", KeyCode.Z },
@@ -89,6 +93,8 @@ public class InputManager : MonoBehaviour
     void KeybordEvents()
     {
         if (Input.GetKeyDown(Keys["Pause"])) Pause();
+        if (Input.GetKeyDown(Keys["Reload"])) Reload();
+        if (Input.GetKeyDown(Keys["Action"])) Action();
         if (Input.GetKeyDown(Keys["Grenade"])) Grenade();
 
         if (Input.GetKeyDown(Keys["SwitchWeaponUp"])) SwitchWeapons(-1);

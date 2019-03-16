@@ -66,6 +66,8 @@ public class Player : Entities
         //Subscribing Modules Methods to corresponding InputManager Events
         Modules.Inputs.Fire += Modules.Weapon.FireWeapon;
         Modules.Inputs.Spell += Modules.Spell.FireSpell;
+        Modules.Inputs.Reload += Modules.Weapon.Reload;
+        Modules.Inputs.Action += Modules.Movement.Action;
         Modules.Inputs.Grenade += Modules.Weapon.FireGrenade;
         Modules.Inputs.MovementInput += Modules.Movement.Move;
         Modules.Inputs.SwitchSpells += Modules.Spell.SwitchSpell;

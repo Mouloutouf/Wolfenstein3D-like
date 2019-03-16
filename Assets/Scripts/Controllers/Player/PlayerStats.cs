@@ -19,7 +19,7 @@ public class PlayerStats
     public float Damages
     {
         get { return this.Stats[StatType.Damages]; }
-        set { this.Stats[StatType.Damages] = value; }
+        set { this.Stats[StatType.Damages] = Mathf.FloorToInt(value); }
     }
 
     [ProgressBar(0, 100), ShowInInspector]
@@ -33,7 +33,7 @@ public class PlayerStats
     public float Ammunitions
     {
         get { return this.Stats[StatType.Ammunitions]; }
-        set { this.Stats[StatType.Ammunitions] = value; }
+        set { this.Stats[StatType.Ammunitions] = Mathf.FloorToInt(value); }
     }
 
     [ProgressBar(0, 20), ShowInInspector]

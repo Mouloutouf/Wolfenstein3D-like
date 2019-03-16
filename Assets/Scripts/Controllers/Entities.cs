@@ -17,6 +17,8 @@ public abstract class Entities : SerializedMonoBehaviour
         if (entityStats.Hitpoints == 0)
         {
             //Implement Game Over
+            //Temp
+            Destroy(this.gameObject);
         }
     }
 

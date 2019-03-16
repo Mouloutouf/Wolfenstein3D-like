@@ -26,19 +26,25 @@ public class PlayerGraphism : Behaviour, IPlClass
 
     }
 
-    public void WeaponFired()
+    public void WeaponEffects()
     {
-        //You can get the activeWeapon with : Modules.Player.activeWeapon
 
+    }
+
+    public void SpellEffects()
+    {
+
+    }
+
+    public void WeaponAudio(string audioName)
+    {
         //SFX
-        Modules.Player.weaponAudio.clip = Modules.Player.activeWeapon.PickAudio("Fire");
+        Modules.Player.weaponAudio.clip = Modules.Player.activeWeapon.PickAudio(audioName);
         Modules.Player.weaponAudio.Play();
     }
 
-    public void SpellFired()
+    public void SpellAudio(string audioName)
     {
-
-
         //SFX
 
     }

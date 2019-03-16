@@ -21,10 +21,8 @@ public class PlayerWeapon : Behaviour, IPlClass
     {
         if (keyDown && canFire)
         {
-            //You can get the activeWeapon with : Modules.Player.activeWeapon
-
-
-            Shoot();
+            if (Modules.Player.activeWeapon.stats.Ammunitions > 0) Shoot();
+            else Modules.Graphism.WeaponAudio("DryFire");
         }
         else
         {
@@ -39,6 +37,27 @@ public class PlayerWeapon : Behaviour, IPlClass
         Modules.Graphism.SwitchWeaponGraphics();
     }
 
+    public void Reload()
+    {
+        Weapon activeWeapon = Modules.Player.activeWeapon;
+        if(activeWeapon.stats.Ammunitions != activeWeapon.stats.MaxAmmo && Modules.Player.stats.Ammunitions > 0)
+        {
+            canFire = false;
+            Modules.Player.StartCoroutine(Cooldown(0.5f));
+            Modules.Graphism.WeaponAudio("Reload");
+            if(Modules.Player.stats.Ammunitions < activeWeapon.stats.MaxAmmo)
+            {
+                activeWeapon.stats.Ammunitions = Modules.Player.stats.Ammunitions;
+                Modules.Player.stats.Ammunitions = 0;
+            }
+            else
+            {
+                activeWeapon.stats.Ammunitions = activeWeapon.stats.MaxAmmo;
+                Modules.Player.stats.Ammunitions -= activeWeapon.stats.MaxAmmo;
+            }
+        }
+    }
+
     public void FireGrenade()
     {
         //You will need Modules.Player.grenadAmount
@@ -49,12 +68,13 @@ public class PlayerWeapon : Behaviour, IPlClass
     #region Private Methods
     private void Shoot()
     {
+        Modules.Graphism.WeaponAudio("Fire");
+
         canFire = false;
-        Modules.Graphism.WeaponFired();
-        /*Since this is a Behaviour and not a MonoBehaviour, 
-        Launch Cooldown Coroutine with : Modules.Player.StartCoroutine(Cooldown(theWeaponCooldown))*/
         cooldownCoroutine = Cooldown(Modules.Player.activeWeapon.stats.FireRate);
         Modules.Player.StartCoroutine(cooldownCoroutine);
+
+        Modules.Player.activeWeapon.stats.Ammunitions -= 1;
 
         //Checking for collisions inside a Sphere using the hittableLY
         Physics.SphereCast(Modules.Camera.transform.position, Modules.Player.activeWeapon.stats.HitRadius, Modules.Camera.transform.forward, out RaycastHit hit, 100f, Modules.Player.hittableLayers, QueryTriggerInteraction.Ignore);
@@ -63,6 +83,11 @@ public class PlayerWeapon : Behaviour, IPlClass
             Debug.Log("[PlayerWeapon] Hit : (" + hit.collider.name +")");
             Debug.DrawLine(start: Modules.Camera.transform.position, end: hit.point, color: Color.red, duration: 3f);
             GameObject.Instantiate(Resources.Load("Impact"), position: hit.point, rotation: Quaternion.identity, hit.collider.transform.parent);
+            if (hit.collider.GetComponent<EnemyCollider>())
+            {
+                EnemyCollider target = hit.collider.GetComponent<EnemyCollider>();
+                target.Hit(Mathf.FloorToInt(Modules.Player.activeWeapon.stats.Damages));
+            }
         }
         else
         {

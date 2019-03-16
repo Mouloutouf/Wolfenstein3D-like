@@ -58,7 +58,7 @@ public class PlayerCamera : MonoBehaviour, IPlClass
     private void Update()
     {
         if (walkAnim) BobHead();
-        else if (!walkAnim && this.transform.localPosition != origin) ReturnToOrigin();
+        if (!walkAnim && this.transform.localPosition != origin) ReturnToOrigin();
     }
     #endregion
 
